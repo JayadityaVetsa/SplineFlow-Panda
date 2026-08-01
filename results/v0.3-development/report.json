@@ -1,0 +1,57 @@
+{
+  "report_kind": "measured_mujoco_benchmark",
+  "minimum_success_rate": 0.8,
+  "rollout_count": 8,
+  "data_policy": "All values are aggregated from the adjacent rollout ledger.",
+  "baseline_completion_time_s": 10.0,
+  "action_chunk": {
+    "maximum_reliable_speedup": 1.0,
+    "by_speedup": {
+      "1.0": {
+        "success_rate": 1.0,
+        "completion_time_mean_s": 10.0,
+        "completion_time_ci95_s": [
+          10.0,
+          10.0
+        ],
+        "achieved_speedup": 1.0,
+        "rollouts": 2
+      },
+      "2.0": {
+        "success_rate": 0.0,
+        "completion_time_mean_s": null,
+        "completion_time_ci95_s": [
+          null,
+          null
+        ],
+        "achieved_speedup": null,
+        "rollouts": 2
+      }
+    }
+  },
+  "bspline_action": {
+    "maximum_reliable_speedup": 2.0,
+    "by_speedup": {
+      "1.0": {
+        "success_rate": 1.0,
+        "completion_time_mean_s": 9.950000000000001,
+        "completion_time_ci95_s": [
+          9.950000000000001,
+          9.950000000000001
+        ],
+        "achieved_speedup": 1.0050251256281406,
+        "rollouts": 2
+      },
+      "2.0": {
+        "success_rate": 1.0,
+        "completion_time_mean_s": 5.0,
+        "completion_time_ci95_s": [
+          5.0,
+          5.0
+        ],
+        "achieved_speedup": 2.0,
+        "rollouts": 2
+      }
+    }
+  }
+}

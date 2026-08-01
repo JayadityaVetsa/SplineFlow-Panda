@@ -1,0 +1,47 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "splineflow-panda"
+version = "0.3.0"
+description = "Measured B-spline action benchmarks for simulated Franka Panda manipulation"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{name = "JayadityaVetsa"}]
+dependencies = [
+  "imageio>=2.37",
+  "imageio-ffmpeg>=0.6",
+  "mujoco>=3.3",
+  "numpy>=2.0",
+  "pandas>=2.2",
+  "plotly>=6.0",
+  "pydantic>=2.10",
+  "PyYAML>=6.0",
+  "scipy>=1.14",
+  "streamlit>=1.45",
+  "typer>=0.15",
+]
+
+[project.optional-dependencies]
+dev = ["build>=1.2", "pytest>=8.3", "pytest-cov>=6.0", "ruff>=0.11"]
+learn = ["torch>=2.7"]
+
+[project.scripts]
+splineflow = "splineflow_panda.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/splineflow_panda"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["slow: requires MuJoCo rendering or a complete benchmark"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+exclude = [".uv-cache", ".venv", "experiments", "assets/mujoco_menagerie"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

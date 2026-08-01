@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this educational benchmark, cite this software and the B-spline Policy paper."
+title: "SplineFlow-Panda"
+type: software
+version: 0.3.0
+date-released: 2026-08-01
+authors:
+  - name: JayadityaVetsa
+repository-code: "https://github.com/JayadityaVetsa/SplineFlow-Panda"
+license: MIT

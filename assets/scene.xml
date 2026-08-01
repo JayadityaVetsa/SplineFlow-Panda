@@ -1,0 +1,20 @@
+<mujoco model="SplineFlow Panda scene">
+  <!-- Copied beside panda.xml by scripts/fetch_menagerie.ps1. -->
+  <include file="panda.xml"/>
+  <visual>
+    <headlight diffuse="0.7 0.7 0.7" ambient="0.25 0.25 0.25"/>
+  </visual>
+  <asset>
+    <texture type="2d" name="checker" builtin="checker" rgb1=".18 .22 .26"
+             rgb2=".28 .32 .36" width="256" height="256"/>
+    <material name="ground" texture="checker" texrepeat="4 4" reflectance=".1"/>
+  </asset>
+  <worldbody>
+    <light pos="0 0 2" dir="0 0 -1" directional="true"/>
+    <geom name="floor" type="plane" size="2 2 .05" material="ground"/>
+    <geom name="table" type="box" pos=".6 0 .18" size=".45 .45 .03"
+          rgba=".55 .38 .22 1"/>
+    <camera name="overview" pos="1.55 -1.15 1.15" xyaxes=".6 .8 0 -.42 .32 .85"
+            fovy="45"/>
+  </worldbody>
+</mujoco>

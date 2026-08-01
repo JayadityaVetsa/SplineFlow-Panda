@@ -1,0 +1,23 @@
+name: MuJoCo smoke test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    env:
+      MUJOCO_GL: egl
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: python -m pip install -e ".[dev]"
+      - run: |
+          git clone --depth 1 --filter=blob:none --sparse https://github.com/google-deepmind/mujoco_menagerie.git assets/mujoco_menagerie
+          git -C assets/mujoco_menagerie sparse-checkout set franka_emika_panda
+          cp assets/scene.xml assets/mujoco_menagerie/franka_emika_panda/splineflow_scene.xml
+      - run: splineflow run configs/scenarios/open_space.yaml --output smoke-runs
+      - run: splineflow inspect $(find smoke-runs -mindepth 1 -maxdepth 1 -type d | head -1)

@@ -1,0 +1,16 @@
+{
+  "tracking_rmse_m": 0.008483134837701195,
+  "tracking_max_m": 0.019610667603267247,
+  "path_length_m": 0.6620711750006512,
+  "execution_time_s": 10.5,
+  "speed_max_m_s": 0.2256649501691796,
+  "acceleration_rms_m_s2": 1.5650009961092217,
+  "jerk_rms_m_s3": 113.92241812568615,
+  "stopped_duration_s": 0.3699999999999991,
+  "waypoint_error_max_m": 0.018922342985300586,
+  "forbidden_contacts": 0.0,
+  "actuator_saturation_rate": 0.6317792578496669,
+  "ik_orientation_error_max_deg": 0.0021339044764179375,
+  "final_error_m": 0.0035341737567376043,
+  "completion_time_s": 10.0
+}

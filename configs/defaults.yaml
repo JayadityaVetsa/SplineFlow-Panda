@@ -1,0 +1,35 @@
+schema_version: 0.3.0
+task_seed: 7
+training_seed: 7
+planner:
+  kind: bspline
+  duration: 4.0
+  sample_rate: 60.0
+  dwell: 0.2
+  policy_rate: 10.0
+  control_rate: 100.0
+  chunk_horizon: 16
+  speedup: 1.0
+  spline_tolerance: 0.002
+simulation:
+  timestep: 0.002
+  scene: builtin_panda
+  camera: overview
+  damping: 0.001
+  ik_position_tolerance: 0.0001
+  ik_orientation_tolerance: 0.0174532925
+  ik_iterations: 100
+  ik_step_limit: 0.15
+  controller:
+    control_rate: 100.0
+    gain_scale: 2.0
+    damping_scale: 1.4
+    torque_limit_scale: 1.0
+    settling_time: 1.0
+    terminal_hold: 0.5
+    saturation_limit: 0.05
+camera:
+  width: 320
+  height: 240
+  fps: 30.0
+  fovy_degrees: 45.0

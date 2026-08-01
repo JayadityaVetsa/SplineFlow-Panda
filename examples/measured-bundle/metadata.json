@@ -1,0 +1,16 @@
+{
+  "schema_version": "0.3.0",
+  "experiment_id": "20260801T035145Z-direction-change-action_chunk-1x-s0-ac60afa1",
+  "name": "direction-change-action_chunk-1x-s0",
+  "created_at": "2026-08-01T03:51:45.428148+00:00",
+  "task_seed": 0,
+  "training_seed": 0,
+  "units": {
+    "length": "metre",
+    "time": "second"
+  },
+  "coordinates": {
+    "world": "MuJoCo world",
+    "image": "origin top-left; u right; v down"
+  }
+}

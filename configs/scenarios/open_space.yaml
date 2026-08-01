@@ -1,0 +1,13 @@
+name: open-space
+seed: 7
+waypoints:
+  - [0.45, -0.20, 0.45]
+  - [0.52, -0.08, 0.52]
+  - [0.55, 0.08, 0.48]
+  - [0.46, 0.20, 0.55]
+planner:
+  kind: bspline
+  duration: 4.0
+  sample_rate: 60.0
+  dwell: 0.2
+

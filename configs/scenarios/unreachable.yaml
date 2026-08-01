@@ -1,0 +1,11 @@
+name: intentionally-unreachable
+seed: 23
+waypoints:
+  - [0.45, -0.10, 0.50]
+  - [1.50, 0.00, 1.50]
+  - [0.45, 0.10, 0.50]
+planner:
+  kind: bspline
+  duration: 4.0
+  sample_rate: 60.0
+

@@ -1,0 +1,26 @@
+name: planar-pushing
+task_seed: 31
+training_seed: 31
+waypoints:
+  - [0.36, -0.24, 0.42]
+  - [0.44, -0.17, 0.34]
+  - [0.48, -0.11, 0.34]
+  - [0.60, 0.08, 0.34]
+  - [0.64, 0.14, 0.34]
+planner:
+  kind: bspline_action
+  duration: 5.0
+  sample_rate: 100.0
+  policy_rate: 10.0
+  control_rate: 100.0
+task:
+  kind: pushing
+  puck:
+    name: puck
+    position: [0.50, -0.08, 0.26]
+    radius: 0.035
+    height: 0.10
+  goal:
+    center: [0.63, 0.12]
+    radius: 0.06
+    hold_time: 0.25
