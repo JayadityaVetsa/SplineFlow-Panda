@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parents[2]
 SCENARIOS = ROOT / "configs" / "scenarios"
 EXPERIMENTS = ROOT / "experiments"
 BENCHMARKS = ROOT / "benchmarks"
+RESULTS = ROOT / "results"
 PAPER_URL = "https://arxiv.org/pdf/2607.09648"
 
 st.set_page_config(
@@ -220,7 +221,11 @@ def render_results_page() -> None:
         "The research result is the fastest execution that still satisfies the same "
         "tracking, collision, and task-success criteria."
     )
-    reports = sorted(BENCHMARKS.glob("*/report.json")) if BENCHMARKS.exists() else []
+    reports = []
+    for root in (RESULTS, BENCHMARKS):
+        if root.exists():
+            reports.extend(root.glob("*/report.json"))
+    reports = sorted(reports)
     if not reports:
         st.info(
             "No report exists yet. Run `splineflow benchmark "
@@ -244,11 +249,17 @@ def render_results_page() -> None:
         st.error(f"Report validation failed: {error}", icon=":material/error:")
     if rollouts:
         verified = sum(path.exists() for path in source_paths)
-        if validation:
+        if validation and source_paths:
             st.success(
                 f"Measured scripted MuJoCo benchmark: {len(rollouts)} rollouts; "
                 f"{verified}/{len(source_paths)} source bundles present; aggregates "
                 "recomputed from the ledger.",
+                icon=":material/verified:",
+            )
+        elif validation:
+            st.success(
+                f"Validated compact measured ledger: {len(rollouts)} MuJoCo rollouts; "
+                "aggregates recomputed successfully. Raw bundles are external release data.",
                 icon=":material/verified:",
             )
     else:
