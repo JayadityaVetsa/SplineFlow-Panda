@@ -12,21 +12,20 @@ license = "MIT"
 authors = [{name = "JayadityaVetsa"}]
 dependencies = [
   "imageio>=2.37",
-  "imageio-ffmpeg>=0.6",
-  "mujoco>=3.3",
   "numpy>=2.0",
   "pandas>=2.2",
   "plotly>=6.0",
   "pydantic>=2.10",
   "PyYAML>=6.0",
   "scipy>=1.14",
-  "streamlit>=1.45",
+  "streamlit>=1.57",
   "typer>=0.15",
 ]
 
 [project.optional-dependencies]
 dev = ["build>=1.2", "pytest>=8.3", "pytest-cov>=6.0", "ruff>=0.11"]
 learn = ["torch>=2.7"]
+simulation = ["imageio-ffmpeg>=0.6", "mujoco>=3.3"]
 
 [project.scripts]
 splineflow = "splineflow_panda.cli:app"

@@ -1911,8 +1911,6 @@ version = "0.3.0"
 source = { editable = "." }
 dependencies = [
     { name = "imageio" },
-    { name = "imageio-ffmpeg" },
-    { name = "mujoco" },
     { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
     { name = "numpy", version = "2.5.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
     { name = "pandas" },
@@ -1935,13 +1933,17 @@ dev = [
 learn = [
     { name = "torch" },
 ]
+simulation = [
+    { name = "imageio-ffmpeg" },
+    { name = "mujoco" },
+]
 
 [package.metadata]
 requires-dist = [
     { name = "build", marker = "extra == 'dev'", specifier = ">=1.2" },
     { name = "imageio", specifier = ">=2.37" },
-    { name = "imageio-ffmpeg", specifier = ">=0.6" },
-    { name = "mujoco", specifier = ">=3.3" },
+    { name = "imageio-ffmpeg", marker = "extra == 'simulation'", specifier = ">=0.6" },
+    { name = "mujoco", marker = "extra == 'simulation'", specifier = ">=3.3" },
     { name = "numpy", specifier = ">=2.0" },
     { name = "pandas", specifier = ">=2.2" },
     { name = "plotly", specifier = ">=6.0" },
@@ -1951,11 +1953,11 @@ requires-dist = [
     { name = "pyyaml", specifier = ">=6.0" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.11" },
     { name = "scipy", specifier = ">=1.14" },
-    { name = "streamlit", specifier = ">=1.45" },
+    { name = "streamlit", specifier = ">=1.57" },
     { name = "torch", marker = "extra == 'learn'", specifier = ">=2.7" },
     { name = "typer", specifier = ">=0.15" },
 ]
-provides-extras = ["dev", "learn"]
+provides-extras = ["dev", "learn", "simulation"]
 
 [[package]]
 name = "starlette"

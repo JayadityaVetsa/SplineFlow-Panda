@@ -5,6 +5,7 @@ independent of whether Community Cloud installs the local project before launchi
 script. Importing the dashboard executes the Streamlit page.
 """
 
+import runpy
 import sys
 from pathlib import Path
 
@@ -12,4 +13,4 @@ SOURCE = Path(__file__).resolve().parent / "src"
 if str(SOURCE) not in sys.path:
     sys.path.insert(0, str(SOURCE))
 
-import splineflow_panda.dashboard  # noqa: E402, F401
+runpy.run_path(str(SOURCE / "splineflow_panda" / "dashboard.py"), run_name="__main__")
