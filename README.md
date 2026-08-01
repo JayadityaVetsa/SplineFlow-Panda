@@ -60,6 +60,11 @@ splineflow dashboard
 
 The fetch script sparsely downloads only the Franka Panda model from MuJoCo Menagerie.
 
+The hosted dashboard loads the committed measured report, trajectory lessons, formulas,
+and artifact viewer. Running new MuJoCo experiments is a local workflow because the
+downloaded Panda model and native rendering environment are intentionally not committed
+to the repository.
+
 ## Reproduce and audit results
 
 Run a small smoke benchmark:
@@ -84,6 +89,17 @@ splineflow reproduce-milestone --seeds 10 --speedups 1,1.5,2,3
 The command benchmarks direction change, obstacle corridor, and planar pushing. It
 stores paired layouts before execution and validates every aggregate against the
 rollout ledger.
+
+Reproducing the committed development result requires eight rollouts instead:
+
+```powershell
+splineflow benchmark configs/scenarios/direction_change.yaml --seeds 2 --speedups 1,2
+splineflow validate-report benchmarks/<generated-benchmark>
+```
+
+Expected qualitative outcome: both methods succeed at 1x; action chunks fail the 2 cm
+waypoint criterion at 2x while B-spline actions remain successful. Exact floating-point
+values may vary slightly across MuJoCo, operating-system, and processor versions.
 
 ## Experimental learned policies
 
