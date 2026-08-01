@@ -6,7 +6,6 @@ import subprocess
 import sys
 from pathlib import Path
 
-import mujoco
 import numpy as np
 import scipy
 
@@ -32,6 +31,12 @@ def git_commit(root: Path | None = None) -> str | None:
 
 def environment_provenance() -> dict[str, str | None]:
     try:
+        import mujoco
+
+        mujoco_version = mujoco.__version__
+    except ImportError:
+        mujoco_version = None
+    try:
         import torch
 
         torch_version = torch.__version__
@@ -40,7 +45,7 @@ def environment_provenance() -> dict[str, str | None]:
     return {
         "python": sys.version.split()[0],
         "platform": platform.platform(),
-        "mujoco": mujoco.__version__,
+        "mujoco": mujoco_version,
         "numpy": np.__version__,
         "scipy": scipy.__version__,
         "torch": torch_version,
