@@ -21,6 +21,9 @@ SCENARIOS = ROOT / "configs" / "scenarios"
 EXPERIMENTS = ROOT / "experiments"
 BENCHMARKS = ROOT / "benchmarks"
 RESULTS = ROOT / "results"
+PANDA_MODEL = (
+    ROOT / "assets" / "mujoco_menagerie" / "franka_emika_panda" / "splineflow_scene.xml"
+)
 PAPER_URL = "https://arxiv.org/pdf/2607.09648"
 
 st.set_page_config(
@@ -850,6 +853,7 @@ def render_simulation_lab(config_path: Path) -> None:
     config = load_config(config_path, ROOT / "configs" / "defaults.yaml")
     scenario_name = config.name
     expected_failure = scenario_name == "intentionally-unreachable"
+    simulation_available = PANDA_MODEL.exists()
     st.header("MuJoCo experiment lab")
     st.markdown(
         "MuJoCo execution adds IK, actuator dynamics, contacts, and tracking error. "
@@ -861,6 +865,13 @@ def render_simulation_lab(config_path: Path) -> None:
             "Panda workspace; passing means IK rejects it cleanly without moving the robot.",
             icon=":material/science:",
         )
+    if not simulation_available:
+        st.info(
+            "This hosted dashboard is an artifact viewer and educational lab. Running new "
+            "MuJoCo experiments requires the locally downloaded Panda model; follow the "
+            "README quick start to run them on your computer.",
+            icon=":material/cloud_off:",
+        )
     button_label = (
         "Run expected IK failure test"
         if expected_failure
@@ -870,6 +881,12 @@ def render_simulation_lab(config_path: Path) -> None:
         button_label,
         type="primary",
         icon=":material/play_arrow:",
+        disabled=not simulation_available,
+        help=(
+            None
+            if simulation_available
+            else "Local-only: the Panda simulation model is not installed on this host."
+        ),
     ):
         if expected_failure:
             try:

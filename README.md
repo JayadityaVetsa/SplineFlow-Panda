@@ -13,6 +13,8 @@ The research question is:
 This is a reproduction-inspired student project, not an official reproduction and not
 a claim of a novel algorithm.
 
+**[Open the live research dashboard](https://splineflow-panda-z8mhg6j3bgnwsxlinc6rpy.streamlit.app/)**
+
 ## Measured development result
 
 The committed compact result summarizes eight real MuJoCo rollouts: two paired
