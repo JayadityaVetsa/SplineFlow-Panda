@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="460" viewBox="0 0 920 460" role="img" aria-labelledby="title desc">
+  <title id="title">Measured speed-success frontier</title>
+  <desc id="desc">Across two paired MuJoCo seeds, action chunks succeed at one times speed and fail at two times speed. B-spline actions succeed at both one and two times speed.</desc>
+  <style>
+    :root { color-scheme: light dark; }
+    .bg { fill: #ffffff; }
+    .axis, .grid { stroke: #cbd5e1; }
+    .grid { stroke-width: 1; }
+    .axis { stroke-width: 1.5; }
+    .label, .tick, .note { fill: #334155; font-family: Inter, Segoe UI, sans-serif; }
+    .label { font-size: 18px; font-weight: 600; }
+    .tick { font-size: 15px; }
+    .note { font-size: 14px; }
+    .chunk { stroke: #f59e0b; fill: #f59e0b; }
+    .spline { stroke: #14b8a6; fill: #14b8a6; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #0d1117; }
+      .axis, .grid { stroke: #30363d; }
+      .label, .tick, .note { fill: #c9d1d9; }
+    }
+  </style>
+  <rect class="bg" width="920" height="460" rx="18"/>
+  <text class="label" x="78" y="42">Measured success rate vs. requested speedup</text>
+  <line class="grid" x1="94" y1="82" x2="850" y2="82"/>
+  <line class="grid" x1="94" y1="222" x2="850" y2="222"/>
+  <line class="grid" x1="94" y1="362" x2="850" y2="362"/>
+  <line class="axis" x1="94" y1="82" x2="94" y2="362"/>
+  <line class="axis" x1="94" y1="362" x2="850" y2="362"/>
+  <text class="tick" x="65" y="88">1.0</text>
+  <text class="tick" x="65" y="228">0.5</text>
+  <text class="tick" x="65" y="368">0.0</text>
+  <text class="tick" x="280" y="390">1x</text>
+  <text class="tick" x="659" y="390">2x</text>
+  <text class="label" x="394" y="430">Target speedup</text>
+  <text class="label" transform="translate(27 282) rotate(-90)">Success rate</text>
+  <polyline class="chunk" points="290,82 668,362" fill="none" stroke-width="5"/>
+  <circle class="chunk" cx="290" cy="82" r="9"/>
+  <path class="chunk" d="M658 352 L678 372 M678 352 L658 372" fill="none" stroke-width="6" stroke-linecap="round"/>
+  <polyline class="spline" points="290,82 668,82" fill="none" stroke-width="5"/>
+  <rect class="spline" x="282" y="74" width="16" height="16" rx="2"/>
+  <rect class="spline" x="660" y="74" width="16" height="16" rx="2"/>
+  <line class="chunk" x1="566" y1="408" x2="600" y2="408" stroke-width="5"/>
+  <circle class="chunk" cx="583" cy="408" r="7"/>
+  <text class="note" x="610" y="413">Action chunk</text>
+  <line class="spline" x1="712" y1="408" x2="746" y2="408" stroke-width="5"/>
+  <rect class="spline" x="730" y="401" width="14" height="14" rx="2"/>
+  <text class="note" x="754" y="413">B-spline</text>
+  <text class="note" x="688" y="350">waypoint criterion failed</text>
+</svg>
